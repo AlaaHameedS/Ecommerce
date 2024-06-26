@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row"> 
+    <div class="col-md-8 offset-md-2">
+        <table class="table table-striped table-hover">
+
+            <thead>
+
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.Name)</th>
+                    <th>@Html.DisplayNameFor(x => x.Description)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>@Html.DisplayFor(x => item.Name)</th>
+                        <th>@Html.DisplayFor(x => item.Description)</th>
+                        <th>
+                            <a class="btn btn-outline-info"> <i class="fas fa-regular fa-pencil mr-2"></i> Edit</a>
+                            <a class="btn btn-outline-secondary"> <i class="fas fa-regular fa-eye mr-2"></i>Details</a>
+                            <a class="btn btn-outline-danger"> <i class="fas fa-regular fa-trash mr-2 "></i>Delete</a>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
