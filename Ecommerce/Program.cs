@@ -1,13 +1,20 @@
 using Ecommerce.Data;
+using Ecommerce.Data.Services;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ICategoryServices,CategoryServices>();
 
-
-
+//builder.Services.Configure<RazorViewEngineOptions > (options =>
+//{
+//    options.ViewLocationFormats.Add("/NotFound/{1}/{0}.cshtml");
+//    options.ViewLocationFormats.Add("/NotFound/Shared/{0}.cshtml");
+//});
+ 
 builder.Services.AddDbContext<EcommerceDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefultConnection")));
 
 

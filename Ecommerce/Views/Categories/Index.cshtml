@@ -23,9 +23,9 @@
                         <th>@Html.DisplayFor(x => item.Name)</th>
                         <th>@Html.DisplayFor(x => item.Description)</th>
                         <th>
-                            <a class="btn btn-outline-info"> <i class="fas fa-regular fa-pencil mr-2"></i> Edit</a>
-                            <a class="btn btn-outline-secondary"> <i class="fas fa-regular fa-eye mr-2"></i>Details</a>
-                            <a class="btn btn-outline-danger"> <i class="fas fa-regular fa-trash mr-2 "></i>Delete</a>
+                            <a class="btn btn-outline-info"> <i class="fas fa-regular fa-pencil "></i> Edit</a>
+                            <a class="btn btn-outline-secondary" asp-action="Details"  asp-route-id="@item.Id" > <i class="fas fa-regular fa-eye "></i>Details</a>
+                            <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id"> <input type="submit" value="Delete" onclick="return confirm('Are you sure want to delete this category')"/></a>
                         </th>
                     </tr>
                 }
@@ -34,3 +34,10 @@
     </div>
 </div>
 
+
+<div class="text-white">
+    <a asp-action="Create" asp-controller="Categories" class="btn btn-outline-success">
+        <i class="fas fa-regular fa-plus-square mr-3"></i>
+        Create</a>
+   
+</div>
