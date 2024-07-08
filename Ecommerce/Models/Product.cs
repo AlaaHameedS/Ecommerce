@@ -1,9 +1,10 @@
-﻿using Ecommerce.Data.Enums;
+﻿using Ecommerce.Data.Base;
+using Ecommerce.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace Ecommerce.Models
 {
-    public class Product
+    public class Product:IBaseEntity
     {
         [Key]
         public int Id { get; set; }

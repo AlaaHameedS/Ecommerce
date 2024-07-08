@@ -1,15 +1,11 @@
-﻿using Ecommerce.Models;
+﻿using Ecommerce.Data.Base;
+using Ecommerce.Models;
 
 namespace Ecommerce.Data.Services
 {
-    public interface ICategoryServices
+    public interface ICategoryServices:IEntityBaseRepository<Category>
     {
-        Task<IEnumerable<Category>> GetAllAsycn();
-        Task<Category> GetByIdAsycn(int id);
-        Task CreateAsync (Category entity);
-        Task UpdateAsync (Category entity);
-        Task DeleteAsync (int id);
-
+       
 
 
     }
