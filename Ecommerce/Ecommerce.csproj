@@ -8,10 +8,12 @@
 
   <ItemGroup>
     <Content Remove="Views\Categories\NotFound.cshtml" />
+    <Content Remove="Views\Products\Create.cshtml" />
     <Content Remove="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.4">
       <PrivateAssets>all</PrivateAssets>
@@ -24,11 +26,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Products\Create.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Products\Create.cshtml" />
     <None Include="Views\Shared\NotFound.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Products\Create.cshtml" />
   </ItemGroup>
 
 </Project>

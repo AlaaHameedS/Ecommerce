@@ -1,0 +1,21 @@
+﻿@model Ecommerce.Models.Product
+
+@{
+    ViewData["Title"] = $"Details of Product {Model.Name}";
+
+}
+<div class="row">
+    <div class="col-md-8 offset-2">
+         <div class="card">
+               <img src="@Model.ImageURL" alt="@Model.Name" style="width:90%;height:300px;">
+               <h1>@Model.Name</h1>
+               <p>@Model.Price.ToString("c")</p>
+               <p>@Model.Descriptoin</p>
+               <p style="color:@Model.ProductColor">@Model.ProductColor</p>
+               <p>@Model.Category.Name</p>
+               <a class="btn btn-success"  asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id">
+                   <i class="fas fa-regular fa-shopping-basket mr-2"></i>
+                   Add To Cart</a>
+           </div>
+    </div>
+</div>
