@@ -1,0 +1,48 @@
+﻿@using Ecommerce.Data.ViewModels
+@model RegisterVM
+@{
+    ViewData["Title"] = "Register Page";
+}
+
+<div class="row">
+    <div class="col-md-5 offset-3">
+
+        <h4> Sign In Account</h4>
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label class="controle-lable" asp-for="FullName"></label>
+                <input class="form-control" asp-for="FullName" autocomplete="off" />
+                <span class="text-danger" asp-validation-for="FullName"></span>
+            </div>
+            <div class="form-group">
+                <label class="controle-lable" asp-for="EmailAddress"></label>
+                <input class="form-control" asp-for="EmailAddress" autocomplete="off" />
+                <span class="text-danger" asp-validation-for="EmailAddress"></span>
+            </div>
+            <div class="form-group">
+                <label class="controle-lable" asp-for="Password"></label>
+                <input class="form-control" asp-for="Password" autocomplete="off" />
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+            <div class="form-group">
+                <label class="controle-lable" asp-for="ConfirmPassword"></label>
+                <input class="form-control" asp-for="ConfirmPassword" autocomplete="off" />
+                <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-outline-success float-right" type="submit" value="Register" />
+                <a class="btn btn-outline-secondary" asp-action="Login"> Login</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -51,7 +51,7 @@ namespace Ecommerce.Data.Base
 
         public Task<T> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return _entities.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] include)

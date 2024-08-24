@@ -1,6 +1,8 @@
 ﻿using Ecommerce.Data;
 using Ecommerce.Data.Services;
+using Ecommerce.Data.Static;
 using Ecommerce.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -8,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class ProductsController : Controller
     {
        
@@ -56,11 +59,15 @@ namespace Ecommerce.Controllers
         [HttpPost, ActionName(nameof(Create))]
         public async Task<IActionResult> CreateProduct(Product product)
         {
-             
+
+            if (ModelState.IsValid)
+            {
                 await _services.CreateAsync(product);
                 return RedirectToAction(nameof(Index));
-            
-            
+            }
+            return View("NotFound");
+
+
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -80,10 +87,21 @@ namespace Ecommerce.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(Product product)
         {
-           
-            //Update
-            await _services.UpdateAsync(product);
-            return RedirectToAction("Index");
+
+            if (ModelState.IsValid)
+            {
+                //Update
+                await _services.UpdateAsync(product);
+                return RedirectToAction("Index");
+            }
+
+            else
+            {
+                ModelState.AddModelError("", "There was an error processing your request.");
+            }
+            return View(product);
+
+
 
         }
 

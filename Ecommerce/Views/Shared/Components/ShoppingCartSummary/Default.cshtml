@@ -1,0 +1,11 @@
+﻿@model int
+@if (Model > 0)
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Orders" asp-action="ShoppingCart">
+            <i class="fas fa-regular fa-shopping-basket"></i>
+            @Model
+            <b class="text-danger">@(ViewBag.Total.ToString("c"))</b>
+        </a>
+    </li>
+}

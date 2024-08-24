@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "Listing All Orders";
+}
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <h2>All Orders</h2>
+        <hr />
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Items</th>
+                    <th>Totals</th>
+                    @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
+                    {
+                        <th>User</th>
+                    }
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">@item.Id</td>
+                        <td class="align-middle">
+                            <ul style="list-style-type:none" >
+                                @foreach (var subitem in item.OrderItems)
+                                {
+                                    <li>@subitem.Product.Name </li>
+                                    <li>@subitem.Amount - @subitem.Price.ToString("c") </li>
+                            
+                                }
+                            </ul>
+                        </td>
+                        <td class="align-middle">
+                            @item.OrderItems.Select(x=>x.Price * x.Amount).Sum().ToString("c")
+                        </td>
+                        @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
+                        {
+                            <td> @item.User.FullName </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
